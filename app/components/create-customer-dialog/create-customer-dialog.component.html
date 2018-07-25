@@ -1,0 +1,17 @@
+<h3 mat-dialog-title> Create customer </h3>
+
+<mat-dialog-content>
+  <form class="dialog-form" [formGroup]="customer">
+
+    <mat-form-field class="customer-field-component">
+      <input matInput placeholder="FirstName" formControlName="firstName">
+    </mat-form-field>
+
+    <mat-form-field class="customer-field-component">
+      <input matInput placeholder="LastName" formControlName="lastName">
+    </mat-form-field>
+
+  </form>
+
+  <button mat-raised-button (click)="createCustomer($event)"> Create </button>
+</mat-dialog-content>

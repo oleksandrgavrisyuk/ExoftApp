@@ -1,0 +1,42 @@
+<h3 mat-dialog-title> Create order </h3>
+
+<mat-dialog-content>
+  <form class="dialog-form" [formGroup]="order">
+
+    <mat-form-field class="order-field-component">
+      <input matInput placeholder="Description" formControlName="description">
+    </mat-form-field>
+
+    <mat-form-field form>
+      <mat-select placeholder="Name of customer" formGroupName="customerId">
+        <mat-option *ngFor="let customer of customers" [value]="customer.id" (onSelectionChange)="onSelectionChange(customer)">
+          {{customer.firstName}} {{customer.lastName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="dateOfOrder">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-list class="list-order-dishes" id="order-dishes">
+      <button mat-mini-fab class="add-dish-to-order">+</button>
+      <mat-list-item>
+        <mat-select placeholder="Dish" formGroupName="dishId">
+          <mat-option *ngFor="let dish of dishes" [value]="dish.id" (onSelectionChange)="onSelectionDishChange(dish)">
+            {{dish.name}}
+            <img src="{{dish.photoPath}}">
+          </mat-option>
+        </mat-select>
+        <mat-form-field class="order-field-component">
+          <input matInput placeholder="Quantity" formControlName="quantity">
+        </mat-form-field>
+      </mat-list-item>
+    </mat-list>
+
+  </form>
+
+  <button mat-raised-button (click)="createOrder()"> Create </button>
+</mat-dialog-content>

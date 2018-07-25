@@ -1,0 +1,10 @@
+mat-form-field {
+  width: 100%;
+}
+button {
+  width: 100%;
+}
+img{
+  max-height: 40px;
+  max-width: 60px;
+}

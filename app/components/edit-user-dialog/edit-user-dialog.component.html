@@ -1,0 +1,32 @@
+<h3 mat-dialog-title> Edit user </h3>
+
+<mat-dialog-content>
+  <div class="customer-component">
+
+    <form class="edit-user-dialog-form" [formGroup]="user">
+      <mat-form-field class="edit-user-field-component">
+        <input matInput placeholder="Id" formControlName="id">
+      </mat-form-field>
+
+      <mat-form-field class="edit-user-field-component">
+        <input matInput placeholder="FirstName" formControlName="firstName">
+      </mat-form-field>
+
+      <mat-form-field class="edit-user-field-component">
+        <input matInput placeholder="LastName" formControlName="lastName">
+      </mat-form-field>
+
+      <mat-form-field class="edit-user-field-component">
+        <input matInput placeholder="Email" formControlName="email">
+      </mat-form-field>
+
+      <mat-form-field class="edit-user-field-component">
+        <input matInput placeholder="Age" formControlName="age">
+      </mat-form-field>
+
+    </form>
+
+  </div>
+
+  <button class="edit-user-field-component" mat-raised-button (click)="editData()"> Edit </button>
+</mat-dialog-content>

@@ -1,0 +1,50 @@
+<app-top-menu [user]="currentUser"> </app-top-menu>
+
+<div class="order-container">
+  <button mat-raised-button (click)="onCreate()"> Create </button>
+
+  <mat-table [dataSource]="orders" matSort class="mat-elevation-z4">
+
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
+      <mat-cell *matCellDef="let element" (click)="onClickEdit(element)"> {{element.id}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
+      <mat-cell *matCellDef="let element" (click)="onClickEdit(element)"> {{element.description}} </mat-cell>
+    </ng-container>
+
+    <!-- CustomerId Column -->
+    <ng-container matColumnDef="customerId">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> CustomerId </mat-header-cell>
+      <mat-cell *matCellDef="let element" (click)="onClickEdit(element)"> {{element.customerId}} </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="nameOfCustomer">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Name of customer </mat-header-cell>
+      <mat-cell *matCellDef="let element" (click)="onClickEdit(element)"> {{element.nameOfCustomer}} </mat-cell>
+    </ng-container>
+
+    <!-- OrderTime Column -->
+    <ng-container matColumnDef="orderTime">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Order Time </mat-header-cell>
+      <mat-cell *matCellDef="let element" (click)="onClickEdit(element)"> {{element.orderTime | date}} </mat-cell>
+    </ng-container>
+
+    <!-- Delete button column-->
+    <ng-container matColumnDef="delete">
+      <mat-header-cell *matHeaderCellDef> Delete order </mat-header-cell>
+      <button mat-raised-button color="warn" *matCellDef="let element" (click)="onDelete(element.id)"> Delete </button>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+</div>

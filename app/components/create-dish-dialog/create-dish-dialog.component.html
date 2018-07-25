@@ -1,0 +1,21 @@
+<h3 mat-dialog-title> Create Dish </h3>
+
+<mat-dialog-content>
+  <form class="dialog-form" [formGroup]="newDish">
+
+    <mat-form-field class="dish-field-component">
+      <input matInput placeholder="Name" formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field class="dish-field-component">
+      <input matInput placeholder="Description" formControlName="description">
+    </mat-form-field>
+
+    <mat-form-field class="dish-field-component">
+      <input matInput placeholder="PhotoPath" formControlName="photoPath">
+      <img src="{{newDish.value.photoPath}}">
+    </mat-form-field>
+  </form>
+
+  <button mat-raised-button (click)="createDish()"> Create </button>
+</mat-dialog-content>

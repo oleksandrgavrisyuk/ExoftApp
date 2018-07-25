@@ -1,0 +1,13 @@
+<div class="top-menu-component">
+
+  <mat-toolbar>
+    <div class="menu-container">
+      <button mat-button [matMenuTriggerFor]="menu"> {{user.firstName}} {{user.lastName}} </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="editProfile()"> Edit profile </button>
+        <button mat-menu-item (click)="logout()"> Logout </button>
+      </mat-menu>
+    </div>
+  </mat-toolbar>
+
+</div>

@@ -1,0 +1,46 @@
+<app-top-menu [user]="currentUser"> </app-top-menu>
+
+<div class="dish-container">
+
+  <button mat-raised-button (click)="onCreate()"> Create </button>
+
+  <mat-table [dataSource]="dishes" matSort class="mat-elevation-z4">
+
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
+      <mat-cell *matCellDef="let element" (click)="onClickEdit(element)"> {{element.id}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element" (click)="onClickEdit(element)"> {{element.name}} </mat-cell>
+    </ng-container>
+
+    <!-- Description Column -->
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
+      <mat-cell *matCellDef="let element" (click)="onClickEdit(element)"> {{element.description}} </mat-cell>
+    </ng-container>
+
+    <!-- Photo Column -->
+    <ng-container matColumnDef="photo">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Photo </mat-header-cell>
+      <mat-cell *matCellDef="let element" (click)="onClickEdit(element)">
+        <img src="{{element.photoPath}}">
+      </mat-cell>
+    </ng-container>
+
+    <!-- Delete button column-->
+    <ng-container matColumnDef="delete">
+      <mat-header-cell *matHeaderCellDef> Delete dish </mat-header-cell>
+      <button mat-raised-button color="warn" *matCellDef="let element" (click)="onDelete(element.id)"> Delete </button>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+
+</div>
